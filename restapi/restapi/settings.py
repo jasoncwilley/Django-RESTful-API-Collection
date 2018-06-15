@@ -125,3 +125,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 ALLOWED_HOSTS=['0.0.0.0']
+
+
+OXFORD_APP_ID = config('OXFORD_APP_ID', default='')
+OXFORD_APP_KEY = config('OXFORD_APP_KEY', default='')

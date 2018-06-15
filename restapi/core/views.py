@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 from github import Github, GithubException
-
+from django.shortcuts import render
+from .forms import DictionaryForm
 
 def home(request):
     is_cached = ('geodata' in request.session)
@@ -59,3 +60,15 @@ def github_client(request):
             'remaining': rate_limit.rate.remaining,
         }
     return render(request, 'core/github.html', {'search_result': search_result})
+
+
+
+def oxford(request):
+    search_result = {}
+    if 'word' in request.GET:
+        form = DictionaryForm(request.GET)
+        if form.is_valid():
+            search_result = form.search()
+    else:
+        form = DictionaryForm()
+    return render(request, 'core/oxford.html', {'form': form, 'search_result': search_result})

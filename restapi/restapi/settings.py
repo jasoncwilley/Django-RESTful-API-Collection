@@ -27,7 +27,7 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='127.0.0.1,localhost')
 
-GOOGLE_MAPS_API_KEY='AIzaSyAtNOf2Eg8JdWa7zOREMfk3J0bZv2Np8B4'
+GOOGLE_MAPS_API_KEY='AIzaSyDl44NLG5PjQxbB069L-iiXDTY4pk4gb3E'
 # Application definition
 
 INSTALLED_APPS = [

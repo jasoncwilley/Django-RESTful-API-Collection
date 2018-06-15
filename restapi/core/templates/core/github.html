@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+  <h2>GitHub API</h2>
+  <form method="get">
+    <input type="text" name="username">
+    <button type="submit">search on github</button>
+  </form>
+  {% if user %}
+    <p><strong>{{ user.name }}</strong> has <strong>{{ user.public_repos }}</strong> public repositories.</p>
+
+    <img src="{{ user.avatar_url}}"  width="250"  height="250"></img>
+
+
+  {% endif %}
+{% endblock %}

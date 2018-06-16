@@ -72,3 +72,13 @@ def oxford(request):
     else:
         form = DictionaryForm()
     return render(request, 'core/oxford.html', {'form': form, 'search_result': search_result})
+
+def thesaurus(request):
+    search_result = {}
+    if 'word' in request.GET:
+        form = DictionaryForm(request.GET)
+        if form.is_valid():
+            search_result = form.thesaurus()
+    else:
+        form = DictionaryForm()
+    return render(request, 'core/thesaurus.html', {'form': form, 'search_result': search_result})

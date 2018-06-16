@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Oxford Thesaurus</h2>
+
+  <form method="get">
+    {{ form.as_p }}
+    <button type="submit">search</button>
+  </form>
+
+  {% if search_result %}
+    <hr>
+    {% if search_result.success %}
+      {% for result in search_result.results %}
+        <h3>{{ result.word }}</h3>
+          
+
+              {% endfor %}
+
+    {% endif %}
+  {% endif %}
+
+{% endblock %}

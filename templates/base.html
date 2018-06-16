@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "/home.css" %}" />
+    <title>Django API Examples</title>
+    <style type="text/css">
+      body {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <h1 style="margin-bottom: 0">RESTful APIs</h1>
+      <a href="{% url 'home' %}">Location Detector</a> /
+      <a href="{% url 'github' %}">Search for GitHub Users</a> /
+      <a href="{% url 'oxford' %}">Look Up a Definition</a> /
+    </header>
+    <hr>
+    {% block content %}
+
+
+
+
+
+    {% endblock %}
+
+
+
+
+    <hr>
+
+  </body>
+</html>

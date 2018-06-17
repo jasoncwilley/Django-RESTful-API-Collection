@@ -4,7 +4,7 @@ from django.conf import settings
 import requests
 from github import Github, GithubException
 from django.shortcuts import render
-from .forms import DictionaryForm
+from .forms import DictionaryForm, ThesaurusForm
 
 def home(request):
     is_cached = ('geodata' in request.session)
@@ -76,9 +76,9 @@ def oxford(request):
 def thesaurus(request):
     search_result = {}
     if 'word' in request.GET:
-        form = DictionaryForm(request.GET)
+        form = ThesaurusForm(request.GET)
         if form.is_valid():
-            search_result = form.thesaurus()
+            search_result = form.search()
     else:
-        form = DictionaryForm()
+        form = ThesaurusForm()
     return render(request, 'core/thesaurus.html', {'form': form, 'search_result': search_result})

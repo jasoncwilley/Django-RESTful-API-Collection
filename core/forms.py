@@ -23,10 +23,15 @@ class DictionaryForm(forms.Form):
                 result['message'] = 'The Oxford API is not available at the moment. Please try again later.'
         return result
 
-    def thesaurus(self):
+
+
+class ThesaurusForm(forms.Form):
+    word = forms.CharField(max_length=25)
+
+    def search(self):
          result = {}
          word = self.cleaned_data['word']
-         endpoint = 'https://od-api.oxforddictionaries.com/api/v1entries/{source_lang}/{word_id}/synonyms'
+         endpoint = 'https://api.chucknorris.io/jokes/random'
          url = endpoint.format(source_lang='en', word_id=word)
          headers= { 'app_id': settings.OXFORD_APP_ID, 'app_key': settings.OXFORD_APP_KEY}
          response = requests.get(url, headers=headers)

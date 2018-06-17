@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Oxford Thesaurus</h2>
+  <h2>Oxford Dictionary</h2>
 
   <form method="get">
     {{ form.as_p }}
@@ -11,12 +11,22 @@
   {% if search_result %}
     <hr>
     {% if search_result.success %}
-      {% for result in search_result.results %}
-        <h3>{{ result.word }}</h3>
-          
+      {% for results in search_result %}
+        <h3>{{ value }}</h3>
+        {% for antonyms in search_result.result %}
+          <h4>{{ print (key)}>
+          <ul>
 
-              {% endfor %}
+              {% for id in antonyms %}
 
+                  <li>{{ r.text }}</li>
+                {% endfor %}
+
+          </ul>
+        {% endfor %}
+  {% endfor %}
+    {% else %}
+      <p><em>{{ search_result.message }}</em></p>
     {% endif %}
   {% endif %}
 

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Oxford Dictionary</h2>
+  <h2>Oxford Thesaurus</h2>
 
   <form method="get">
     {{ form.as_p }}
-    <button type="submit">search</button>
+    <button class="btn button-primary" type="submit">search</button>
   </form>
 
   {% if search_result %}

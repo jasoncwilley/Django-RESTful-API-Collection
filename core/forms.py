@@ -2,6 +2,23 @@ from django import forms
 from django.conf import settings
 import requests
 
+class ChuckForm(forms.Form):
+
+    def reply(self):
+        result ={}
+        enpoint = 'https://api.chucknorris.io/jokes/random'
+        reply= requests.get('https://api.chucknorris.io/jokes/random')
+        if reply.status_code == 200:
+            result = reply.json()
+            result['success']
+        else:
+            result['success'] = False
+            if response.status_code == 404:  # NOT FOUND
+                result['message'] = 'Even Chuck Norris takes a vacation. Please try again later.'
+            else:
+                result['message'] = 'Even Chuck Norris takes a vacation. Please try again later.'
+        return result
+
 class DictionaryForm(forms.Form):
     word = forms.CharField(max_length=25)
 

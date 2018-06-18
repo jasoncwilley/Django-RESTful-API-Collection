@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Among Men some are Good, others Great, but only One Chuck Norris</h4>
+
+<form method="get">
+  {{ form.as_p }}
+  <button type="submit">Click for a New Fact</button>
+</form>
+
+
+  <hr>
+
+
+    <ul><img width="125"
+             height="125"
+             frameborder="10"
+             style="border:0"
+             src="https://assets.chucknorris.host/img/avatar/chuck-norris.png"</img>
+        <li>{{ value }}</li>
+    </ul>
+
+
+    {% endblock %}

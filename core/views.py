@@ -3,29 +3,25 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 from github import Github, GithubException
-from django.shortcuts import render
 from .forms import DictionaryForm, ThesaurusForm
+import requests
 
-def home(request):
-    is_cached = ('geodata' in request.session)
+def reqchuck(request):
+    search_results = {}
+    reply= requests.get('https://api.chucknorris.io/jokes/random')
+    request.session['cwords'] = reply.json()
 
-    if not is_cached:
-        ip_address = request.META.get('HTTP_X_FORWARDED_FOR', '')
-        response = requests.get('http://freegeoip.net/json/%s' % ip_address)
-        request.session['geodata'] = response.json()
+    return render(request, 'core/chuck.html', {'search_result': search_result})
 
-    geodata = request.session['geodata']
+def chuck(request):
 
-    return render(request, 'core/home.html', {
-        'ip': geodata['ip'],
-        'country': geodata['country_name'],
-        'city': geodata['city'],
-        'state': geodata['region_name'],
-        'latitude': geodata['latitude'],
-        'longitude': geodata['longitude'],
-        'api_key': settings.GOOGLE_MAPS_API_KEY,
-        'is_cached': is_cached
-})
+    reply= requests.get('https://api.chucknorris.io/jokes/random')
+    request.session['cwords'] = reply.json()
+
+    return render(request, 'core/chuck.html', {
+        'value': reply.json()['value']
+        })
+
 
 
 def github(request):
@@ -61,7 +57,26 @@ def github_client(request):
         }
     return render(request, 'core/github.html', {'search_result': search_result})
 
+def home(request):
+    is_cached = ('geodata' in request.session)
 
+    if not is_cached:
+        ip_address = request.META.get('HTTP_X_FORWARDED_FOR', '')
+        response = requests.get('http://freegeoip.net/json/%s' % ip_address)
+        request.session['geodata'] = response.json()
+
+    geodata = request.session['geodata']
+
+    return render(request, 'core/home.html', {
+        'ip': geodata['ip'],
+        'country': geodata['country_name'],
+        'city': geodata['city'],
+        'state': geodata['region_name'],
+        'latitude': geodata['latitude'],
+        'longitude': geodata['longitude'],
+        'api_key': settings.GOOGLE_MAPS_API_KEY,
+        'is_cached': is_cached
+       })
 
 def oxford(request):
     search_result = {}
@@ -72,6 +87,9 @@ def oxford(request):
     else:
         form = DictionaryForm()
     return render(request, 'core/oxford.html', {'form': form, 'search_result': search_result})
+
+
+
 
 def thesaurus(request):
     search_result = {}

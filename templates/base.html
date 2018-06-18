@@ -19,20 +19,31 @@
         max-width: 800px;
         margin: 0 auto;
         padding: 0 20px;
-      }
-    </style>
-  </head>
+        color: grey;
+        background: rgb(69,72,77); /* Old browsers */
+        background: -moz-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
+
+    button: {
+      color: black;
+    }
+
+
+          }</style>
   <body>
 
     <header>
-      <h1 style="margin-bottom: 0">Django RESTful API Examples</h1><br>
+      <h1 style="margin-bottom: 20">Collection of API Examples</h1>
       <a href="{% url 'home' %}">Location Detector</a> /
-      <a href="{% url 'github' %}">Search for GitHub Users</a> /
-      <a href="{% url 'oxford' %}">Look Up a Definition</a> /
+      <a href="{% url 'github' %}">Search GitHub Users</a> /
+      <a href="{% url 'oxford' %}">Dictionary</a> /
+      <a href="{% url 'chuck' %}">Chuck Norris Facts</a> /
     </header>
   <br>  <hr>
     {% block content %}
-
+  <style type="text/css"> body {button: color black;"</style>
 
 
 

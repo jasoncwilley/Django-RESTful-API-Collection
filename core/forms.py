@@ -2,11 +2,34 @@ from django import forms
 from django.conf import settings
 import requests
 
+class TriviaForm(forms.Form):
+    def question(self):
+        result = {}
+        response = requests.get('https://opentdb.com/api.php?amount=1&type=boolean')
+        if response.status_code == 200:  # SUCCESS
+            result = response.json()[1]
+            result['success'] = True
+        else:
+            result['success'] = False
+            if response.status_code == 404:  # NOT FOUND
+                result['message'] = 'No entry found'
+            else:
+                result['message'] = 'Trivia is not available at the moment. Please try again later.'
+        return result
+
+
+
+
+
+
+
+
+
 class ChuckForm(forms.Form):
 
     def reply(self):
         result ={}
-        enpoint = 'https://api.chucknorris.io/jokes/random'
+        endpoint = 'https://api.chucknorris.io/jokes/random'
         reply= requests.get('https://api.chucknorris.io/jokes/random')
         if reply.status_code == 200:
             result = reply.json()
@@ -18,6 +41,7 @@ class ChuckForm(forms.Form):
             else:
                 result['message'] = 'Even Chuck Norris takes a vacation. Please try again later.'
         return result
+
 
 class DictionaryForm(forms.Form):
     word = forms.CharField(max_length=25)
@@ -48,7 +72,7 @@ class ThesaurusForm(forms.Form):
     def search(self):
          result = {}
          word = self.cleaned_data['word']
-         endpoint = 'https://api.chucknorris.io/jokes/random'
+         endpoint = 'https://od-api.oxforddictionaries.com/api/v1/entries/{source_lang}/{word_id}/synonyms;antonyms'
          url = endpoint.format(source_lang='en', word_id=word)
          headers= { 'app_id': settings.OXFORD_APP_ID, 'app_key': settings.OXFORD_APP_KEY}
          response = requests.get(url, headers=headers)

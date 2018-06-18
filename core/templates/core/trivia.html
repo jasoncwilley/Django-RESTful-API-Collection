@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Mister Know It All</h4>
+
+<form method="get">
+  {{ form.as_p }}
+  <button type="submit">Click for Answer</button>
+</form>
+
+
+  <hr>
+
+    <ul>
+        <li>{{ results }}</li>
+        {% for question in results %}
+        <1i> {{results[1]}}</li>
+    </ul>
+        {% endfor %}
+
+    {% endblock %}

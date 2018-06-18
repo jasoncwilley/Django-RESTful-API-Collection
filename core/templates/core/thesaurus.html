@@ -8,26 +8,45 @@
     <button class="btn button-primary" type="submit">search</button>
   </form>
 
-  {% if search_result %}
-    <hr>
-    {% if search_result.success %}
-      {% for results in search_result %}
-        <h3>{{ value }}</h3>
-        {% for antonyms in search_result.result %}
-          <h4>{{ print (key)}>
+
+{% if search_result %}
+  <hr>
+  {% if search_result.success %}
+       {% for result in search_result.results %}
+      <h3>{{ result.word }}</h3>
           <ul>
+             {% for lexicalentry in result.lexicalEntries %}
 
-              {% for id in antonyms %}
+                {% for entry in lexicalentry.entries %}
 
-                  <li>{{ r.text }}</li>
-                {% endfor %}
+                    {% for entry in lexicalentry.entries %}
 
-          </ul>
-        {% endfor %}
-  {% endfor %}
-    {% else %}
-      <p><em>{{ search_result.message }}</em></p>
-    {% endif %}
+                         {% for sense in entry.senses %}
+
+                             {% for synonym in sense.synonyms %}
+
+                                 {% for synonym in sense.synonyms %}
+
+                                            <li>{{ synonym.id }}</li>
+                                        
+                                  {% endfor %}
+
+                             {% endfor %}
+
+                        {% endfor %}
+
+                   {% endfor %}
+
+               {% endfor %}
+           </ul>
+           {% endfor %}
+
+      {% endfor %}
+
+   {% else %}
+
+    <p><em>{{ search_result.message }}</em></p>
   {% endif %}
+{% endif %}
 
 {% endblock %}

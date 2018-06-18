@@ -8,6 +8,7 @@ urlpatterns = [
     path('github/client/', views.github_client, name='github_client'),
     path('oxford/', views.oxford, name='oxford'),
     path('thesaurus/', views.thesaurus, name='thesaurus'),
-    path('chuck/',  views.chuck, name='chuck')
+    path('chuck/',  views.chuck, name='chuck'),
+    path('trivia/', views.trivia, name='trivia')
 
 ]

@@ -3,8 +3,22 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 from github import Github, GithubException
-from .forms import DictionaryForm, ThesaurusForm
-import requests
+from .forms import DictionaryForm, ThesaurusForm, ChuckForm, TriviaForm
+
+
+def trivia(request):
+    search_result = {}
+    results= requests.get('https://opentdb.com/api.php?amount=1&type=boolean')
+
+
+    return render(request, 'core/trivia.html', {
+    'results': results.json()['results']
+        })
+
+def question(request):
+    question= requests.querydict('question')('https://opentdb.com/api.php?amount=1&type=boolean')
+    return render(request, 'core/trivia.html', {'question': question})
+
 
 def reqchuck(request):
     search_results = {}
@@ -98,5 +112,5 @@ def thesaurus(request):
         if form.is_valid():
             search_result = form.search()
     else:
-        form = ThesaurusForm()
+        form = ThesaururusForm()
     return render(request, 'core/thesaurus.html', {'form': form, 'search_result': search_result})

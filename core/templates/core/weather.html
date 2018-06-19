@@ -13,6 +13,8 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
     <title>Weather Forecast</title>
 </head>
 
@@ -30,7 +32,7 @@
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
   }
   .button {
-    color: blue;
+    color: blue!important;
     margin-bottom: 25px!important;
   }
   .jumbotron {
@@ -70,6 +72,7 @@
                                     Add City
                                 </button>
                             </div>
+                        <button class="btn-primary">Call remove() on paragraphs></button>
                         </div>
                     </form>
                 </div>
@@ -89,6 +92,7 @@
                                 </figure>
                             </div>
                             <div class="media-content">
+
                                 <div class="content">
                                     <p>
                                         <span class="title">{{ city_weather.city }}</span>
@@ -107,6 +111,13 @@
     </section>
     <footer class="footer">
     </footer>
+
+    <script>
+    $( "button" ).click(function() {
+      $( "div" ).remove(".box");
+    });
+    </script>
+
 </body>
 
 </html>

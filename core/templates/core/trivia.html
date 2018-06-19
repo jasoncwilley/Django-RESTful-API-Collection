@@ -5,20 +5,40 @@
 
 <form method="get">
   {{ form.as_p }}
-  <button type="submit">Click for Answer</button>
-</form>
+  <button type="submit">New Question</button>
+</form><br>
+<div class="container">
+    <div class="row"></div>
+    <div class="row category">
+        <div class="col-sm-offset-2 col-sm-7">
+            <h3>Category:   {{trivia_data.category}}</h3>
+        </div>
+    </div>
+    <div class="row question">
+        <div class="col-sm-offset-2 col-sm-7">
+          <h4>Question: True or False?</h4>
+          <h4>{{trivia_data.question}}</h4>
+        </div>
+    </div>
+    <div class="row answer">
+        <div class="col-sm-offset-2 col-sm-7">
+          <div id="extraControls" style="display: none;">{{trivia_data.correct_answer}}</div><br>
+          <button type="submit">Reveal Answer</button>
+        </div>
+    </div>
+</div>
 
 
-  <hr>
+<script>
+$(document).ready(function() {
+    $("div#extraControls").removeClass("hidden");
+});
+</script>
+<script>
+$( "button" ).click(function() {
+  $( "div" ).show(".answer");
+});
+</script>
 
 
-
-
-  {% for result in results %}
-   {% for question in result.question %}
-    {% if result.question %}
-        {{ result.question }}
-      {% endif %}
-  {% endfor %}
-  {% endfor %}
-    {% endblock %}
+{% endblock content %}

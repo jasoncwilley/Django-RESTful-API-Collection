@@ -40,14 +40,18 @@ def weather(request):
 
 
 def trivia(request):
-    search_result = {}
-    results= requests.get('https://opentdb.com/api.php?amount=1&type=boolean')
 
+    url = 'https://opentdb.com/api.php?amount=1&type=boolean'
+    r = requests.get(url).json()
 
-    return render(request, 'core/trivia.html', {
-    'results': results.json()['results']
-        })
-
+    trivia_data = {
+        'category' : r["results"][0]['category'],
+        'question' : r["results"][0]['question'],
+        'correct_answer' : r["results"][0]['correct_answer']
+        }
+    context = { 'trivia_data' : trivia_data}
+    print(trivia_data)
+    return render(request, 'core/trivia.html', context)
 
 
 

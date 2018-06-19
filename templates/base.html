@@ -11,10 +11,10 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-
-    <title>Django API Examples</title>
-    <style type="text/css">
+    <title>Django API Collection</title>
+  <style type="text/css">
       body {
         max-width: 800px;
         margin: 0 auto;
@@ -25,13 +25,9 @@
         background: -webkit-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
         background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
+      }
 
-    button: {
-      color: black;
-    }
-
-
-          }</style>
+</style>
   <body>
 
     <header>
@@ -41,10 +37,10 @@
       <a href="{% url 'oxford' %}">Dictionary</a> /
       <a href="{% url 'synonyms' %}">Synonyms</a> /
       <a href="{% url 'chuck' %}">Chuck Norris Facts</a> /
-      <a href="{% url 'trivia' %}">Trivia Question<a>  /
+      <a href="{% url 'trivia' %}">Trivia Question</a>  /
       <a href="{% url 'weather' %}">Weather Forcast</a> /
-    </header>
-  <br>  <hr>
+    </header><br>
+  <hr>
     {% block content %}
 
 
@@ -52,11 +48,7 @@
 
 
     {% endblock %}
-
-
-
-
-    <hr>
+  <hr>
 
   </body>
 </html>

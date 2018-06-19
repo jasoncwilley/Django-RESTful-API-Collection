@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
      'whitenoise',
     'core',
-    'weather', 
     'rest_framework'
 ]
 

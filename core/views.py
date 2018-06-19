@@ -4,22 +4,29 @@ from django.conf import settings
 import requests
 from github import Github, GithubException
 from .forms import DictionaryForm, SynonymsForm, ChuckForm, TriviaForm
+from .models import City
 
 def weather(request):
-     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=098732b5261acdda6e9a574b9f4360b5'
-     city= 'Las Vegas'
-     r = requests.get(url.format(city))
-     print(r.text)
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=098732b5261acdda6e9a574b9f4360b5'
+    city= 'Las Vegas'
+    cities = City.objects.all()
+    weather_data = []
 
-     city_weather = {
-         'city': city,
-         'tempeture': r['main']['temp'],
-         'description': r['weather'][0]['description'],
-         'icon': ,
+    for city in cities:
 
+        r = requests.get(url.format(city)).json()
 
-     }
-     return render(request, "core/weather.html")
+        city_weather = {
+            'city': city.name,
+            'tempeture' : r['main']['temp'],
+            'description': r['weather'][0]['description'],
+            'icon' : r['weather'][0]['icon'],
+        }
+        weather_data.append(city_weather)
+    print(weather_data)
+
+    context = {'city_weather' : city_weather}
+    return render(request, "core/weather.html", context)
 
 
 

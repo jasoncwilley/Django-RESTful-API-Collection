@@ -28,9 +28,10 @@
       background: -webkit-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
       background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
-}
-  .button: {
+  }
+  .button {
     color: blue;
+    margin-bottom: 25px!important;
   }
   .jumbotron {
     background: rgb(69,72,77); /* Old browsers */
@@ -38,11 +39,14 @@
     background: -webkit-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
+  }
 
+  .section {
+    margin-left: 150px!important;
   }
 
 </style>
-     <section>
+
         <div class="container">
             <div class="jumbotron">
                 <h1 class="title">
@@ -50,20 +54,19 @@
                 </h1>
             </div>
         </div>
-    </section>
+
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-offset-8 is-4">
+                <div class="column is-offset-4 is-4">
                     <form method="POST">
                         {% csrf_token %}
                         <div class="field has-addons">
                             <div class="control is-expanded">
-
                                 {{ form.name }}
                             </div>
                             <div class="control">
-                                <button type="submit" class="button is-info">
+                                <button class="btn-primary" type="submit" class="button is-info">
                                     Add City
                                 </button>
                             </div>

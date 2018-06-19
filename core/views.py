@@ -3,13 +3,19 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 from github import Github, GithubException
-from .forms import DictionaryForm, SynonymsForm, ChuckForm, TriviaForm
+from .forms import DictionaryForm, SynonymsForm, ChuckForm, TriviaForm, CityForm
 from .models import City
 
 def weather(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=098732b5261acdda6e9a574b9f4360b5'
-    city= 'Las Vegas'
+    if request.method == 'POST':
+        form = CityForm(request.POST)
+        form.save()
+
+    form = CityForm()
+
     cities = City.objects.all()
+
     weather_data = []
 
     for city in cities:
@@ -17,15 +23,15 @@ def weather(request):
         r = requests.get(url.format(city)).json()
 
         city_weather = {
-            'city': city.name,
-            'tempeture' : r['main']['temp'],
-            'description': r['weather'][0]['description'],
+            'city' : city.name,
+            'temperature' : r['main']['temp'],
+            'description' : r['weather'][0]['description'],
             'icon' : r['weather'][0]['icon'],
         }
-        weather_data.append(city_weather)
-    print(weather_data)
 
-    context = {'city_weather' : city_weather}
+        weather_data.append(city_weather)
+
+    context = {'weather_data' : weather_data, 'form' : form}
     return render(request, "core/weather.html", context)
 
 

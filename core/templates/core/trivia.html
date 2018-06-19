@@ -11,11 +11,14 @@
 
   <hr>
 
-    <ul>
-        <li>{{ results }}</li>
-        {% for question in results %}
-        <1i> {{results[1]}}</li>
-    </ul>
-        {% endfor %}
 
+
+
+  {% for result in results %}
+   {% for question in result.question %}
+    {% if result.question %}
+        {{ result.question }}
+      {% endif %}
+  {% endfor %}
+  {% endfor %}
     {% endblock %}

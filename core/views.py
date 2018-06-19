@@ -3,7 +3,27 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 from github import Github, GithubException
-from .forms import DictionaryForm, ThesaurusForm, ChuckForm, TriviaForm
+from .forms import DictionaryForm, SynonymsForm, ChuckForm, TriviaForm
+
+def weather(request):
+     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=098732b5261acdda6e9a574b9f4360b5'
+     city= 'Las Vegas'
+     r = requests.get(url.format(city))
+     print(r.text)
+
+     city_weather = {
+         'city': city,
+         'tempeture': r['main']['temp'],
+         'description': r['weather'][0]['description'],
+         'icon': ,
+
+
+     }
+     return render(request, "core/weather.html")
+
+
+
+
 
 
 def trivia(request):
@@ -15,17 +35,10 @@ def trivia(request):
     'results': results.json()['results']
         })
 
-def question(request):
-    question= requests.querydict('question')('https://opentdb.com/api.php?amount=1&type=boolean')
-    return render(request, 'core/trivia.html', {'question': question})
 
 
-def reqchuck(request):
-    search_results = {}
-    reply= requests.get('https://api.chucknorris.io/jokes/random')
-    request.session['cwords'] = reply.json()
 
-    return render(request, 'core/chuck.html', {'search_result': search_result})
+
 
 def chuck(request):
 
@@ -102,15 +115,22 @@ def oxford(request):
         form = DictionaryForm()
     return render(request, 'core/oxford.html', {'form': form, 'search_result': search_result})
 
-
-
-
-def thesaurus(request):
+def synonyms(request):
     search_result = {}
     if 'word' in request.GET:
-        form = ThesaurusForm(request.GET)
+        form = SynonymsForm(request.GET)
         if form.is_valid():
             search_result = form.search()
     else:
-        form = ThesaururusForm()
-    return render(request, 'core/thesaurus.html', {'form': form, 'search_result': search_result})
+        form = SynonymsForm()
+    return render(request, 'core/synonyms.html', {'form': form, 'search_result': search_result})
+
+def antonyms(request):
+    search_result = {}
+    if 'word' in request.GET:
+        form = SynonymsForm(request.GET)
+        if form.is_valid():
+            search_result = form.search()
+    else:
+        form = SynonymsForm()
+    return render(request, 'core/synonyms.html', {'form': form, 'search_result': search_result})

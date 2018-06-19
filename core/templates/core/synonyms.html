@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Oxford Thesaurus</h2>
+  <h2>Get a List of Synonyms</h2>
 
   <form method="get">
     {{ form.as_p }}
@@ -26,9 +26,9 @@
                              {% for synonym in sense.synonyms %}
 
                                  {% for synonym in sense.synonyms %}
-
-                                            <li>{{ synonym.id }}</li>
-                                        
+<ul>
+                                            <li>{{ synonym.id}}</li>
+ </ul>
                                   {% endfor %}
 
                              {% endfor %}

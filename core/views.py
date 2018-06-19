@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 from github import Github, GithubException
-from .forms import DictionaryForm, SynonymsForm, ChuckForm, TriviaForm, CityForm
+from .forms import DictionaryForm, SynonymsForm, CityForm
 from .models import City
 
 def weather(request):
@@ -33,10 +33,6 @@ def weather(request):
 
     context = {'weather_data' : weather_data, 'form' : form}
     return render(request, "core/weather.html", context)
-
-
-
-
 
 
 def trivia(request):

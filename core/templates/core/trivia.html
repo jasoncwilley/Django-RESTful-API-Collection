@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h4>Mister Know It All</h4>
+<h4>Mister Know It All Trivia</h4>
 
-<form method="get">
-  {{ form.as_p }}
-  <button type="submit">New Question</button>
-</form><br>
 <div class="container">
     <div class="row"></div>
     <div class="row category">
         <div class="col-sm-offset-2 col-sm-7">
+          <a href="{% url 'trivia' %}" class="btn btn-info" role="button">New Question</a>
+             <br>
             <h3>Category:   {{trivia_data.category}}</h3>
         </div>
     </div>
@@ -23,7 +21,7 @@
     <div class="row answer">
         <div class="col-sm-offset-2 col-sm-7">
           <div id="extraControls" style="display: none;">{{trivia_data.correct_answer}}</div><br>
-          <button type="submit">Reveal Answer</button>
+          <button type="submit" class="btn btn-info">Reveal Answer</button>
         </div>
     </div>
 </div>

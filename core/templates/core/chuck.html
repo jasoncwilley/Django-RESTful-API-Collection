@@ -3,10 +3,7 @@
 {% block content %}
 <h4>Among Men some are Good, others Great, but there is only One Chuck Norris</h4>
 
-<form method="get">
-  {{ form.as_p }}
-  <button type="submit">Click for a New Fact</button>
-</form>
+  <a href="{% url 'chuck' %}" class="btn btn-info" role="button">Get Another Chuckism</a>
 
 
   <hr>

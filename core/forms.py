@@ -10,6 +10,18 @@ class CityForm(ModelForm):
         fields = ['name']
         widgets ={'name': TextInput(attrs={'class' : 'input', 'placeholder': 'Enter a City Name'})}
 
+class RobohashForm(forms.Form):
+    user_text = forms.CharField(max_length= 250)
+
+    def hashit(self):
+        result = {}
+        user_text = self.cleaned_data
+        iframe = 'img src="https://robohash.org/?{text}.png"'
+        url = endpoint.format()
+
+        print(url)
+
+        return result
 
 class DictionaryForm(forms.Form):
     word = forms.CharField(max_length=25)

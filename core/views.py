@@ -3,8 +3,55 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 from github import Github, GithubException
-from .forms import DictionaryForm, SynonymsForm, CityForm
+from .forms import DictionaryForm, SynonymsForm, CityForm, RobohashForm
 from .models import City
+from django.http import HttpResponse
+
+def robohash(request):
+    user_text = {}
+    form = RobohashForm(request.GET)
+    if form.is_valid():
+            user_text = form.hashit()
+    else:
+        form = RobohashForm()
+    return render(request, 'core/robohash.html', { 'form': form, 'user_text': user_text})
+
+def oxford(request):
+    search_result = {}
+    if 'word' in request.GET:
+        form = DictionaryForm(request.GET)
+        if form.is_valid():
+            search_result = form.search()
+    else:
+        form = DictionaryForm()
+    return render(request, 'core/oxford.html', {'form': form, 'search_result': search_result})
+
+
+
+
+
+def crime(request):
+
+    url = 'http://NflArrest.com/api/v1/crime'
+    r = requests.get(url).json()
+
+    print(r)
+    crime_data = {
+    'DUI' : r[0]['Category'],
+    'DUIARRESTS' : r[0]['arrest_count'],
+    'HANDICAP' : r[69]['Category'],
+    'HANDIARRESTS' : r[69]['arrest_count'],
+    'CHILDSUPP' : r[34]['Category'],
+    'CHILDSUPPARRESTS' : r[34]['arrest_count'],
+    'DOMESTIC' : r[3]['Category'],
+    'DOMESTICPARRESTS' : r[3]['arrest_count']
+
+    }
+
+    context = {'crime_data' : crime_data}
+    print(crime_data)
+    return render(request, 'core/crime.html', context)
+
 
 def weather(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=098732b5261acdda6e9a574b9f4360b5'
@@ -49,10 +96,6 @@ def trivia(request):
     print(trivia_data)
     return render(request, 'core/trivia.html', context)
 
-
-
-
-
 def chuck(request):
 
     reply= requests.get('https://api.chucknorris.io/jokes/random')
@@ -61,6 +104,7 @@ def chuck(request):
     return render(request, 'core/chuck.html', {
         'value': reply.json()['value']
         })
+
 
 
 

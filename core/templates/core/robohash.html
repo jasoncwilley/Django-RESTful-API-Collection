@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "/home.css" %}" />
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Javascript for changing the img element -->
+<script>
+function updateRobots (){
+   document.getElementById('image').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png";
+}
+</script>
+<script>
+function checkRobots (){
+   document.getElementById('image3').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png";
+}
+</script>
+
+<script>
+function updateMonsters (){
+   document.getElementById('image2').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png?set=set2";
+}
+</script>
+<script>
+function checkMonsters (){
+   document.getElementById('image5').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png?set=set2";
+}
+</script>
+
+<script>
+function updateKittens (){
+   document.getElementById('image4').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value ) +".png?set=set4";
+}
+</script>
+
+</head>
+    <title>Django API Collection</title>
+  <style type="text/css">
+      body {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+        color: grey;
+        background: rgb(69,72,77); /* Old browsers */
+        background: -moz-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
+      }
+       .card {
+
+         max-width: 400px;
+         background-color: #111;
+         border-width: 1px;
+         border-color: #FFFFFF;
+         min-height: 200px;
+         background: rgb(69,72,77); /* Old browsers */
+         background: -moz-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+         background: -webkit-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+         background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
+       }
+</style>
+  <body>
+
+    <header>
+      <h1 style="margin-bottom: 20">Collection of API Examples</h1>
+      <a href="{% url 'home' %}">Location Detector</a> /
+      <a href="{% url 'github' %}">Search GitHub Users</a> /
+      <a href="{% url 'oxford' %}">Dictionary</a> /
+      <a href="{% url 'synonyms' %}">Synonyms</a> /
+      <a href="{% url 'chuck' %}">Chuck Norris Facts</a> /
+      <a href="{% url 'trivia' %}">Trivia Question</a>  /
+      <a href="{% url 'weather' %}">Weather Forcast</a> /
+      <a href="{% url 'crime' %}">NFL Bad Boys</a> /
+    </header><br>
+  <hr>
+  <h2>RobotHash</h2>
+
+  <div class="containter">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-5">
+
+              <div class="card">
+                <div class="card-footer">Footer</div>
+                <div class="card-header">
+               <input id="textInput" type="text"><button onclick="updateRobots()">Get RobotHash!</button>
+             </div>
+              <div class="card-body">
+              <a> <img id="image" src='http://robohash.org/hashit.png' alt="RobotHash" height="150" width="150"></img></a>
+              </div>
+              </div>
+
+               <div class="card">
+                 <div class="card-footer">Footer</div>
+                 <div class="card-header">
+                <input id="textInput" type="text"><button onclick="updateMonsters()">Get MonsterHash!</button>
+              </div>
+               <div class="card-body">
+               <a> <img id="image2" src='http://robohash.org/hashit.png?set=set2' alt="MonsterHash" height="150" width="150"></img></a>
+               </div>
+                        </div>
+
+               <div class="card">
+                 <div class="card-footer">Footer</div>
+            <div class="card-header">
+            <input id="textInput" type="text"><button onclick="updateKittens()">Get KittenhHash!</button>
+            </div>
+            <div class="card-body">
+            <a> <img id="image4" src='http://robohash.org/hashit.png?set=set4' alt="KittenHash" height="150" width="150"></img></a>
+            </div>
+            </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="card">
+                <div class="card-footer">Footer</div>
+                <div class="card-header">
+               <input id="textInput" type="text"><button onclick="checkRobots()">Check RobotHash!</button>
+             </div>
+              <div class="card-body">
+              <a> <img id="imag3" src='http://robohash.org/hashit.png' alt="CheckRobotHash" height="150" width="150"></img></a>
+              </div>
+            </div>
+
+               <div class="card">
+                   <div class="card-footer">Footer</div>
+                 <div class="card-header">
+                <input id="textInput" type="text"><button onclick="checkMonsters()">Check MonsterHash!</button>
+              </div>
+               <div class="card-body">
+               <a> <img id="image5" src='http://robohash.org/hashit.png?set=set2' alt="Check MonsterHash" height="150" width="150"></img></a>
+               </div>
+              </div>
+
+
+               <div class="card">
+            <div class="card-footer">Footer</div>
+            <div class="card-header">
+            <input id="textInput" type="text"><button onclick="checkKittens()">Check KittenhHash!</button>
+            </div>
+            <div class="card-body">
+            <a> <img id="image6" src='http://robohash.org/hashit.png?set=set4' alt="Check KittenHash" height="150" width="150"></img></a>
+            </div>
+            </div>
+        </div>

@@ -139,5 +139,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ALLOWED_HOSTS=['0.0.0.0']
 
 
-OXFORD_APP_ID = config('OXFORD_APP_ID', default='')
-OXFORD_APP_KEY = config('OXFORD_APP_KEY', default='')
+OXFORD_APP_ID = config('OXFORD_APP_ID', default='2b541cbc')
+OXFORD_APP_KEY = config('OXFORD_APP_KEY', default='de9a0d8c682e0c0240938ceae631ee0b')
+OPENMAPAPPID = config('OPENMAPAPPID', default = '098732b5261acdda6e9a574b9f4360b5')

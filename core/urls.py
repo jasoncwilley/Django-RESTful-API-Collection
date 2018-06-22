@@ -10,7 +10,8 @@ urlpatterns = [
     path('synonyms/', views.synonyms, name='synonyms'),
     path('chuck/',  views.chuck, name='chuck'),
     path('trivia/', views.trivia, name='trivia'),
-    path('weather/', views.weather, name='weather')
-
+    path('weather/', views.weather, name='weather'),
+    path('crime/', views.crime, name='crime'),
+    path('robohash/', views.robohash, name='robohash')
 
 ]

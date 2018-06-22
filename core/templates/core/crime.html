@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Number of NFL Players Arrested for <strong>{{crime_data.Category}}</strong> as of 2016 was <strong>{{crime_data.arrest_count}}</strong></h4>
+
+
+
+<div class="container">
+   <div class="row category">
+      <div class="col-sm-offset-2 col-sm-7">
+
+         <div>
+            <h3>Crime:   {{crime_data.DUI}}</h3>
+         </div>
+      </div>
+   </div>
+   <div class="row question">
+      <div class="col-sm-offset-2 col-sm-7">
+         <div>
+            <h4>Number of Arrests: {{crime_data.DUIARRESTS}}</h4>
+         </div>
+      </div>
+   </div>
+   <div class="row category">
+      <div class="col-sm-offset-2 col-sm-7">
+
+                  <div>
+            <h3>Crime:   {{crime_data.HANDICAP}}</h3>
+         </div>
+      </div>
+   </div>
+   <div class="row question">
+      <div class="col-sm-offset-2 col-sm-7">
+         <div>
+            <h4>Number of Arrests: {{crime_data.HANDIARRESTS}}</h4>
+         </div>
+      </div>
+      <div class="row category">
+         <div class="col-sm-offset-2 col-sm-7">
+                        <h3>Crime:   {{crime_data.CHILDSUPP}}</h3>
+         </div>
+      </div>
+   </div>
+<div class="row category">
+         <div class="col-sm-offset-2 col-sm-7">
+            <h4>Number of Arrests: {{crime_data.CHILDSUPPARRESTS}}</h4>
+         </div>
+      </div>
+      <div class="row category">
+         <div class="col-sm-offset-2 col-sm-7">
+
+            <div>
+               <h3>Crime:   {{crime_data.DOMESTIC}}</h3>
+            </div>
+         </div>
+      </div>
+      <div class="row question">
+         <div class="col-sm-offset-2 col-sm-7">
+            <div>
+               <h4>Number of Arrests: {{crime_data.DOMESTICPARRESTS}}</h4>
+            </div>
+         </div>
+</div>
+</div>
+
+
+
+{% endblock content %}

@@ -8,34 +8,6 @@
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Javascript for changing the img element -->
-<script>
-function updateRobots (){
-   document.getElementById('image').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png";
-}
-</script>
-<script>
-function checkRobots (){
-   document.getElementById('image3').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png";
-}
-</script>
-
-<script>
-function updateMonsters (){
-   document.getElementById('image2').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png?set=set2";
-}
-</script>
-<script>
-function checkMonsters (){
-   document.getElementById('image5').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png?set=set2";
-}
-</script>
-
-<script>
-function updateKittens (){
-   document.getElementById('image4').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value ) +".png?set=set4";
-}
-</script>
 
 </head>
     <title>Django API Collection</title>
@@ -64,6 +36,14 @@ function updateKittens (){
          background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
        }
+       input {
+         margin-bottom: 25px;
+       }
+
+       button {
+         margin-left: 75px;
+         border-radius: 50%;
+       }
 </style>
   <body>
 
@@ -80,7 +60,13 @@ function updateKittens (){
     </header><br>
   <hr>
   <h2>RobotHash</h2>
-
+  <br>
+<p>A cryptographic hash function is a hash function which takes an input (or 'message') and returns a fixed-size alphanumeric string.
+  Some standard applications that employ hash functions include authentication, message integrity (using an HMAC (Hashed MAC)), message fingerprinting, data corruption detection, and digital signature efficiency.</p>
+  <p>Robohash is a web service that makes it easy to provide unique image of a robot, monster or kitten for any given string of characters that can be displayed on a webpage and help ensure data integrity.
+    Go ahead and give it try.  Use the forms first column below to create a Robohash and check it using the corresponding form under the second column.  If you enter the same string in both forms it will return the same pictures.
+ </p>
+ <br>
   <div class="containter">
 
 
@@ -89,64 +75,105 @@ function updateKittens (){
             <div class="col-sm-offset-1 col-sm-5">
 
               <div class="card">
-                <div class="card-footer">Footer</div>
+                <div class="card-footer"></div>
                 <div class="card-header">
-               <input id="textInput" type="text"><button onclick="updateRobots()">Get RobotHash!</button>
+               <input id="textInput" type="text" value='Type Something Here...' width='200px'>
+               <br>
+               <button onclick="updateRobots()">Get RobotHash!</button>
              </div>
               <div class="card-body">
               <a> <img id="image" src='http://robohash.org/hashit.png' alt="RobotHash" height="150" width="150"></img></a>
               </div>
               </div>
-
+<br>
+<br>
                <div class="card">
-                 <div class="card-footer">Footer</div>
+                 <div class="card-footer"></div>
                  <div class="card-header">
-                <input id="textInput" type="text"><button onclick="updateMonsters()">Get MonsterHash!</button>
+                <input id="textInput2" type="text" value='Type Something Here...'><button onclick="updateMonsters()">Get MonsterHash!</button>
               </div>
                <div class="card-body">
-               <a> <img id="image2" src='http://robohash.org/hashit.png?set=set2' alt="MonsterHash" height="150" width="150"></img></a>
+               <a> <img id="image2" src='http://robohash.org/bobsrobot.png?set=set2' alt="MonsterHash" height="150" width="150"></img></a>
                </div>
-                        </div>
-
+              </div>
+<br><br>
                <div class="card">
-                 <div class="card-footer">Footer</div>
+                 <div class="card-footer"></div>
             <div class="card-header">
-            <input id="textInput" type="text"><button onclick="updateKittens()">Get KittenhHash!</button>
+            <input id="textInput5" type="text" value='Type Something Here...'><button onclick="updateKittens()">Get KittenhHash!</button>
             </div>
             <div class="card-body">
-            <a> <img id="image4" src='http://robohash.org/hashit.png?set=set4' alt="KittenHash" height="150" width="150"></img></a>
+            <a> <img id="image5" src='http://robohash.org/hashit.png?set=set4' alt="KittenHash" height="150" width="150"></img></a>
             </div>
             </div>
             </div>
+
+
             <div class="col-sm-5">
               <div class="card">
-                <div class="card-footer">Footer</div>
+                <div class="card-footer"></div>
                 <div class="card-header">
-               <input id="textInput" type="text"><button onclick="checkRobots()">Check RobotHash!</button>
+               <input id="textInput3" type="text" value='Type Something Here...'><button onclick="checkRobots()">Check RobotHash!</button>
              </div>
               <div class="card-body">
-              <a> <img id="imag3" src='http://robohash.org/hashit.png' alt="CheckRobotHash" height="150" width="150"></img></a>
+              <a> <img id="image3" src='http://robohash.org/bobsrobot.png' alt="CheckRobotHash" height="150" width="150"></img></a>
               </div>
             </div>
-
+            <br>
+<br>
                <div class="card">
-                   <div class="card-footer">Footer</div>
+                   <div class="card-footer"></div>
                  <div class="card-header">
-                <input id="textInput" type="text"><button onclick="checkMonsters()">Check MonsterHash!</button>
+                <input id="textInput4" type="text" value='Type Something Here...'><button onclick="checkMonsters()">Check MonsterHash!</button>
               </div>
                <div class="card-body">
-               <a> <img id="image5" src='http://robohash.org/hashit.png?set=set2' alt="Check MonsterHash" height="150" width="150"></img></a>
+               <a> <img id="image4" src='http://robohash.org/hashit.png?set=set2' alt="Check MonsterHash" height="150" width="150"></img></a>
                </div>
               </div>
-
+<br>
+<br>
 
                <div class="card">
-            <div class="card-footer">Footer</div>
+            <div class="card-footer"></div>
             <div class="card-header">
-            <input id="textInput" type="text"><button onclick="checkKittens()">Check KittenhHash!</button>
+            <input id="textInput6" type="text" value='Type Something Here...'><button onclick="checkKittens()">Check KittenhHash!</button>
             </div>
             <div class="card-body">
-            <a> <img id="image6" src='http://robohash.org/hashit.png?set=set4' alt="Check KittenHash" height="150" width="150"></img></a>
+            <a> <img id="image6" src='http://robohash.org/bobsro.png?set=set4' alt="Check KittenHash" height="150" width="150"></img></a>
             </div>
+
             </div>
         </div>
+        <!-- Javascript for changing the img element -->
+    <script>
+    function updateRobots (){
+       document.getElementById('image').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput').value) +".png";
+    }
+    </script>
+    <script>
+    function checkRobots (){
+       document.getElementById('image3').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput3').value) +".png";
+    }
+    </script>
+
+    <script>
+    function updateMonsters (){
+       document.getElementById('image2').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput2').value) +".png?set=set2";
+    }
+    </script>
+    <script>
+    function checkMonsters (){
+       document.getElementById('image4').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput4').value) +".png?set=set2";
+    }
+    </script>
+
+    <script>
+    function updateKittens (){
+       document.getElementById('image5').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput5').value ) +".png?set=set4";
+    }
+    </script>
+    <script>
+    function checkKittens (){
+       document.getElementById('image6').src = "https://robohash.org/" + encodeURIComponent(document.getElementById('textInput6').value ) +".png?set=set4";
+    }
+    </script>

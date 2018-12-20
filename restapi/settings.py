@@ -26,9 +26,9 @@ SECRET_KEY = config('SECRET_KEY', default='s3cr3t_k3y')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='127.0.0.1,localhost')
-
-GOOGLE_MAPS_API_KEY='AIzaSyDl44NLG5PjQxbB069L-iiXDTY4pk4gb3E'
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='127.0.0.1,localhost')
+ALLOWED_HOSTS = ['*']
+GOOGLE_MAPS_API_KEY='AIzaSyDlwcoc0FVx9RO8w2nKVeJ3XO_d0zFzCLU'
 # Application definition
 
 INSTALLED_APPS = [
@@ -136,7 +136,7 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-ALLOWED_HOSTS=['0.0.0.0']
+
 
 
 OXFORD_APP_ID = config('OXFORD_APP_ID', default='2b541cbc')

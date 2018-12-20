@@ -2,13 +2,13 @@
 
 {% block content %}
   <h2>GEO API</h2>
-  <p>Your ip address is <strong>{{ ip }}</strong>, your IP suggests that you are in <strong>{{ city }}, {{ state }}.</strong></p>
+  <p>Your IP address is <strong>{{ location_data.ip }}</strong> which suggests that you are in <strong>{{ location_data.city }}, {{ location_data.region_name }}.</strong></p>
 
   <iframe width="250"
            height="250"
            frameborder="0"
            style="border:0"
-           src="https://www.google.com/maps/embed/v1/view?center={{ latitude }},{{ longitude }}&zoom=8&key={{ api_key }}"
+           src="https://maps.googleapis.com/maps/api/staticmap?center={{ location_data.city }},{{ location_data.region_name }}&zoom=8&size=250x250&key={{location_data.api_key}}"
            allowfullscreen></iframe>
 
 

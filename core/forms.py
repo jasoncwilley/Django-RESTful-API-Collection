@@ -58,6 +58,7 @@ class SynonymsForm(forms.Form):
          response = requests.get(url, headers=headers)
          if response.status_code == 200:  # SUCCESS
              result = response.json()
+             print(result)
              result['success'] = True
          else:
              result['success'] = False

@@ -19,13 +19,13 @@
 
                 {% for entry in lexicalentry.entries %}
 
-                    {% for entry in lexicalentry.entries %}
+
 
                          {% for sense in entry.senses %}
 
                              {% for synonym in sense.synonyms %}
 
-                                 {% for synonym in sense.synonyms %}
+
 <ul>
                                             <li>{{ synonym.id}}</li>
  </ul>
@@ -39,9 +39,6 @@
 
                {% endfor %}
            </ul>
-           {% endfor %}
-
-      {% endfor %}
 
    {% else %}
 

@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h4>Among Men some are Good, others Great, but there is only One Chuck Norris</h4>
+<h4 class="chuckheading">Among Men some are Good, others Great, but there is only One Chuck Norris</h4>
 
-  <a href="{% url 'chuck' %}" class="btn btn-info" role="button">Get Another Chuckism</a>
 
 
   <hr>
 
-
+<div class="chuckpic">
     <img width="125"
              height="125"
              frameborder="10"
              style="border:0"
              src="https://assets.chucknorris.host/img/avatar/chuck-norris.png"</img>
+             <a  href="{% url 'chuck' %}" class="chuckbutton btn btn-info" role="button">Get Another Chuckism</a>
+</div>
     <ul>
-        <li>{{ value }}</li>
+        <li class="chucksays">"{{ value }}"</li>
     </ul>
 
 
